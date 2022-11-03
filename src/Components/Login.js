@@ -16,12 +16,12 @@ const Login = () => {
   const handleSubmit = () => {
     if (password.current.value == "Test@123") {
       localStorage.setItem("passwordData", "Test@123");
+      changeFlag();
+      openDoar();
+      startTimer();
     } else {
       alert("Access denied due to wrong password");
     }
-    // startTimer();
-    changeFlag();
-    openDoar();
   };
 
   const minute = localStorage.getItem("minute");

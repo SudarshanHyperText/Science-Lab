@@ -12,35 +12,27 @@ export const TimeProvider = ({ children }) => {
 
   var timer;
   useEffect(() => {
-    timer = setInterval(() => {
-      setSeconds(seconds - 1);
+    if (isdoarOpen) {
+      timer = setInterval(() => {
+        setSeconds(seconds - 1);
 
-      if (seconds === 0) {
-        setMinutes(minutes - 1);
-        setSeconds(59);
-      }
-    }, 1000);
+        if (seconds === 0) {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
+      }, 1000);
+    }
     return () => clearInterval(timer);
   });
-
-  const startTimer = () => {
-    // const timer = setInterval(() => {
-    //   setSeconds(seconds - 1);
-    //   if (seconds === 0) {
-    //     setMinutes(minutes - 1);
-    //     setSeconds(59);
-    //   }
-    // }, 1000);
-    // return () => clearInterval(timer);
-  };
+  const startTimer = () => {};
 
   const handleLogout = () => {
     localStorage.clear();
     localStorage.setItem("second", seconds);
     localStorage.setItem("minute", minutes);
     setFlag(false);
-    closeDoar();
     clearInterval(timer);
+    closeDoar();
     // clearInterval(timer);
   };
   useEffect(() => {
